@@ -18,7 +18,7 @@ Bu proje, kullanıcının yüklediği resim veya videolardaki marka logolarını
 
 - **Backend:** Python, Flask
 - **Model:** Ultralytics YOLOv8
-- **Veri Seti:** [Roboflow Universe - Logo Brand Detection](https://universe.roboflow.com/aitesting-9dz7l/logo-brand)
+- **Veri Seti:** [Roboflow Universe -Logo Detector](https://universe.roboflow.com/nicolai-hoirup-nielsen/logo-detector-cgxef/dataset/2)
 - **Kütüphaneler:** OpenCV-Python, Pillow, NumPy
 - **Frontend:** HTML, CSS, JavaScript
 
@@ -83,7 +83,7 @@ Uygulama başladığında, terminalde `* Running on http://127.0.0.1:1071/` gibi
 ```
 
 ## 💡 Model Summary
-
+```text
 Model summary (fused): 72 layers, 3,417,080 parameters, 0 gradients, 10.0 GFLOPs
 val: Fast image access ✅ (ping: 0.0±0.0 ms, read: 632.0±339.0 MB/s, size: 27.1 KB)
 val: Scanning /dataset/Logo-Detector-2/test/labels... 565 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 565/565 1.5Kit/s 0.4s
@@ -294,6 +294,7 @@ Results saved to /content/runs/detect/val2
 
 --- Doğrulama Sonuçları ---
 mAP50-95 Skoru: 0.3642
+```
 mAP50 Skoru: 0.5621
 Precision (Kesinlik): 0.7038
 Recall (Duyarlılık): 0.5058
