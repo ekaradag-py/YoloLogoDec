@@ -291,6 +291,7 @@ val: New cache created: /dataset/Logo-Detector-2/test/labels.cache
 Speed: 0.4ms preprocess, 3.2ms inference, 0.0ms loss, 1.3ms postprocess per image
 Results saved to /content/runs/detect/val2
 
+
 --- Doğrulama Sonuçları ---
 mAP50-95 Skoru: 0.3642
 mAP50 Skoru: 0.5621
