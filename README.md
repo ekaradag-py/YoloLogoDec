@@ -294,10 +294,10 @@ Results saved to /content/runs/detect/val2
 
 --- Doğrulama Sonuçları ---
 mAP50-95 Skoru: 0.3642
-```
+
 mAP50 Skoru: 0.5621
 Precision (Kesinlik): 0.7038
 Recall (Duyarlılık): 0.5058
 
 Detaylı sonuçlar ve grafikler 'runs/detect/val/' klasörüne kaydedildi.
-
+```
