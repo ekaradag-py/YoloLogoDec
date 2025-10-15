@@ -289,8 +289,7 @@ val: New cache created: /dataset/Logo-Detector-2/test/labels.cache
             yonex_text          2          3      0.822      0.333      0.336      0.101
                   zara          2          4      0.468       0.75      0.629      0.506
 Speed: 0.4ms preprocess, 3.2ms inference, 0.0ms loss, 1.3ms postprocess per image
-Results saved to /content/runs/detect/val2
-
+Results saved to /runs/detect/val
 
 --- Doğrulama Sonuçları ---
 mAP50-95 Skoru: 0.3642
