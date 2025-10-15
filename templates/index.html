@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="tr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Logo Tespit Aracı</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+
+        .messages {
+            list-style: none;
+            padding: 0;
+        }
+
+        .messages li {
+            color: red;
+        }
+
+        .warning {
+            color: #856404;
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+
+        /* --- YENİ EKLENEN CSS STİLLERİ --- */
+        /* Ekranı kaplayan karartma efekti için */
+        #loader-overlay {
+            position: fixed;
+            /* Sayfa kaysa bile yerinde kalır */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            /* Yarı saydam siyah */
+            z-index: 1000;
+            /* Her şeyin üstünde görünmesi için */
+            display: none;
+            /* Varsayılan olarak gizli */
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        /* Dönen yükleme ikonu */
+        .loader-spinner {
+            border: 8px solid #f3f3f3;
+            /* Açık gri halka */
+            border-top: 8px solid #007bff;
+            /* Mavi dönen kısım */
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+        }
+
+        /* Yükleme ikonunun altındaki yazı */
+        #loader-overlay p {
+            color: white;
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+
+        /* Dönme animasyonu */
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="loader-overlay">
+        <div class="loader-spinner"></div>
+        <p>Video işleniyor, lütfen bekleyin...<br>Bu işlem birkaç dakika sürebilir.</p>
+    </div>
+
+
+    <div class="container">
+        <h1>Logo Analizi İçin Resim veya Video Yükleyin</h1>
+
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul class=messages>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+
+        <form id="upload-form" method="post" enctype="multipart/form-data">
+            <p><input id="file-input" type="file" name="file" accept="image/*,video/mp4,video/x-m4v,video/*"></p>
+            <p><input type="submit" value="Analiz Et"></p>
+        </form>
+
+        <div class="warning">
+            <strong>Uyarı:</strong> Video analizi, videonun uzunluğuna ve bilgisayarınızın gücüne bağlı olarak dakikalar
+            sürebilir. Lütfen işlem bitene kadar sayfayı kapatmayın.
+        </div>
+    </div>
+
+
+    <script>
+        // Gerekli HTML elemanlarını seçiyoruz
+        const uploadForm = document.getElementById('upload-form');
+        const fileInput = document.getElementById('file-input');
+        const loaderOverlay = document.getElementById('loader-overlay');
+
+        // Form gönderildiğinde (submit edildiğinde) bu fonksiyon çalışacak
+        uploadForm.addEventListener('submit', function (event) {
+            // Seçilen bir dosya var mı diye kontrol et
+            if (fileInput.files.length > 0) {
+                // Seçilen dosyanın türünü kontrol et
+                const fileType = fileInput.files[0].type;
+
+                // Eğer dosya bir video ise...
+                if (fileType.startsWith('video/')) {
+                    // Yükleme ekranını göster
+                    loaderOverlay.style.display = 'flex';
+                }
+            }
+            // Eğer dosya resimse veya dosya seçilmemişse hiçbir şey yapma,
+            // form normal şekilde gönderilsin.
+        });
+    </script>
+
+</body>
+
+</html>

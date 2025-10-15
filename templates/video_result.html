@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="tr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Video Analiz Sonucu</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            margin: 0;
+            padding: 40px;
+            background-color: #f8f9fa;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 30px;
+            border: 1px solid #dee2e6;
+            border-radius: 12px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        h1 {
+            color: #343a40;
+        }
+
+        .summary {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #e9ecef;
+            border-radius: 8px;
+        }
+
+        .summary p {
+            margin: 5px 0;
+            font-size: 1.2em;
+        }
+
+        .summary span {
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        table {
+            width: 100%;
+            margin: 30px auto;
+            border-collapse: collapse;
+        }
+
+        td,
+        th {
+            padding: 12px 15px;
+            border: 1px solid #dee2e6;
+            text-align: left;
+        }
+
+        th {
+            background-color: #e9ecef;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            margin-right: 10px;
+            padding: 15px 25px;
+            color: #fff;
+            background-color: #28a745;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1.1em;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Video Analiz Sonucu</h1>
+
+        <div class="summary">
+            <p>Videoda toplam <span>{{ results.logo_counts|length }}</span> farklı marka tespit edildi.</p>
+
+            <p>Video boyunca toplam <span>{{ results.total_detections }}</span> benzersiz logo görüldü.</p>
+        </div>
+
+        {% if results.logo_counts %}
+        <h3>Marka Bazında Tespit Sayıları (Benzersiz ID Sayısı)</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Marka</th>
+                    <th>Görülen Benzersiz Logo Sayısı</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for brand, count in results.logo_counts.items() %}
+                <tr>
+                    <td>{{ brand }}</td>
+                    <td>{{ count }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>Bu videoda bilinen bir logo tespit edilemedi.</p>
+        {% endif %}
+
+        <a href="{{ url_for('uploaded_file', filename=video_file) }}" class="btn">İşlenmiş Videoyu İndir</a>
+        <a href="{{ url_for('index') }}" class="btn btn-secondary">Yeni Bir Analiz Yap</a>
+    </div>
+</body>
+
+</html>
