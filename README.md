@@ -29,7 +29,7 @@ Projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları izleyin.
 ### 1. Projeyi Klonlama (veya İndirme)
 
 ```bash
-git clone [https://github.com/KULLANICI_ADINIZ/PROJE_ADI.git](https://github.com/KULLANICI_ADINIZ/PROJE_ADI.git)
+git clone [https://github.com/ekaradag-py/YoloLogoDec.git](https://github.com/ekaradag-py/YoloLogoDec.git)
 cd PROJE_ADI
 ```
 
