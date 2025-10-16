@@ -29,8 +29,8 @@ Projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları izleyin.
 ### 1. Projeyi Klonlama (veya İndirme)
 
 ```bash
-git clone [https://github.com/ekaradag-py/YoloLogoDec.git](https://github.com/ekaradag-py/YoloLogoDec.git)
-cd PROJE_ADI
+git clone https://github.com/ekaradag-py/YoloLogoDec.git
+cd YoloLogoDec
 ```
 
 ### 2. Sanal Ortam Oluşturma ve Aktive Etme
